@@ -4,14 +4,13 @@ import { assets } from '../../assets/assets'
 import { StoreContext } from '../../Context/StoreContext'
 
 const FoodItem = ({id,name,price,description,image}) => {
-  const context = useContext(StoreContext);
+ 
+  // if (!context) {
+  //   // Context not ready or provider missing
+  //   return <div>Loading...</div>
+  // }
 
-  if (!context) {
-    // Context not ready or provider missing
-    return <div>Loading...</div>
-  }
-
-  const { cartItems, addToCart, removeFromCart, url } = context;
+  const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
 
   const itemCount = cartItems && cartItems[id] ? cartItems[id] : 0;
 
